@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Facturaciones.Models.Facturas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<script src="https://cdnjs.com/libraries/moment.js"></script>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_factura)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.nombre_autor)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.domicilio_comercial)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.cuit)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.leyenda)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_factura)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.fecha_inicio_actividad)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_comprador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_emicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_vencimiento)
+        </th>
+        <th>
+            <input type="checkbox">
+            Seleccionar Todo
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo_factura)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.nombre_autor)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.domicilio_comercial)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.cuit)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.leyenda)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_factura)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.fecha_inicio_actividad)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_comprador)
+            </td>
+            <td>
+                moment('@Html.DisplayFor(modelItem => item.fecha_emicion)').utc();
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_vencimiento)
+            </td>
+            <td>
+                <input type="checkbox">
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            </td>
+        </tr>
+    }
+
+    <asp:button runat="server" text="Button"></asp:button>
+            
+</table>
+    <input type="checkbox" onclick="checkAll()" id="myCheckAll" />Check All
+<br />
+<table id="myTable">
+@for (int i = 1; i <= 10; i++)
+{
+    <tr>
+        <th>
+            <input type="checkbox" />
+        </th>
+        <th>
+            @i.ToString()
+        </th>
+        <th>
+            @i Number
+        </th>
+        <th>
+            <input type="checkbox">asdasd
+        </th>
+    </tr>
+}
+</table>
+
+<script type="text/javascript">
+    $('#myCheckAll').click(function () {
+        var chk = $(this).is(':checked');
+        var cnt = $('input[type=checkbox]', "#myTable").length;
+        $('input[type=checkbox]', "#myTable").each(function () {
+            if (chk) {
+                $(this).attr('checked','checked');
+            }
+            else {
+                $(this).removeAttr('checked');
+            }
+        });
+
+
+
+    });
+
+</script>
